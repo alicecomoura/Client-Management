@@ -1,0 +1,57 @@
+.clients-table-container {
+  padding: 10px 40px;
+
+  h2 {
+    text-align: left;
+    font-size: 1rem;
+  }
+
+  h3 {
+    text-align: left;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 4px;
+  }
+}
+
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 26px;
+}
+
+.clients-table th,
+.clients-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: left;
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.clients-table th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+.clients-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.edit-button,
+.delete-button {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #666;
+  font-size: 0.625rem;
+  margin-right: 4px;
+  min-width: 2.6rem;
+  text-align: center;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #a4a4a4;
+  font-weight: 600;
+}
