@@ -3,37 +3,29 @@ import { clients } from "./constants";
 import { ClientEdit } from "../ClientsAction/ClientEdit";
 import { ClientDelete } from "../ClientsAction/ClientDelete";
 import "./index.css";
+import { Client } from "../../utils/interfaces/Client.interface";
+import { ActionState } from "../../utils/interfaces/Client.interface";
 
 export const ClientsList = () => {
-  const [actionState, setActionState] = useState({
-    isEditing: false,
+const [actionState, setActionState] = useState<ActionState>({
+  isEditing: false,
+  isDeleting: false,
+  client: null,
+});
+const handleEditClientClick = (client: Client) => {
+  setActionState({
+    isEditing: true,
     isDeleting: false,
-    client: {
-      id: null,
-      name: "",
-      document: "",
-      account: "",
-      manager: "",
-      distributor: "",
-    },
+    client,
   });
-  const handleEditClientClick = (client) => {
-    // Implement the logic to edit the client
-    setActionState({
-      isEditing: true,
-      isDeleting: false,
-      client: client,
-    });
+};
 
-    console.log(`Edit client ${client.name} ${actionState.isEditing} clicked`);
-  };
-
-  const handleDeleteClientClick = (client) => {
+  const handleDeleteClientClick = (client: Client) => {
     // Implement the logic to delete the client
     setActionState({
       isEditing: false,
       isDeleting: true,
-      client: client,
+      client
     });
 
     console.log(`Delete client ${client.name} ${actionState.isDeleting} clicked`);
@@ -78,8 +70,8 @@ export const ClientsList = () => {
           </tbody>
         </table>
       </div>
-      {actionState.isEditing && <ClientEdit client={actionState.client} />}
-      {actionState.isDeleting && <ClientDelete client={actionState.client} />}
+      {actionState.isEditing && <ClientEdit client={actionState?.client} />}
+      {actionState.isDeleting && <ClientDelete client={actionState?.client} />}
     </>
   );
 }
