@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClientProps } from '../../../utils/interfaces/Client.interface';
+import { ClientProps } from '../../../shared/interfaces/Client.interface';
 
 export const ClientEdit = ({ client }: ClientProps) => {
     console.log(client);

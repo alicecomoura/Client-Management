@@ -3,8 +3,9 @@ import { clients } from "./constants";
 import { ClientEdit } from "../ClientsAction/ClientEdit";
 import { ClientDelete } from "../ClientsAction/ClientDelete";
 import "./index.css";
-import { Client } from "../../utils/interfaces/Client.interface";
-import { ActionState } from "../../utils/interfaces/Client.interface";
+import { Client } from "../../shared/interfaces/Client.interface";
+import { ActionState } from "../../shared/interfaces/Client.interface";
+import { ClientsTable } from "../../features/clients/components/ClientsTable";
 
 export const ClientsList = () => {
 const [actionState, setActionState] = useState<ActionState>({
@@ -35,40 +36,7 @@ const handleEditClientClick = (client: Client) => {
       <div className="clients-table-container">
         <h2>Clients List</h2>
         <h3>Current customer management updated in real time.</h3>
-        <table className="clients-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Document</th>
-              <th>Account</th>
-              <th>Manager</th>
-              <th>Distributor</th>
-              <th>Email</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {clients.map((client) => (
-              <tr key={client.id}>
-                <td>{client.name}</td>
-                <td>{client.document}</td>
-                <td>{client.account}</td>
-                <td>{client.manager}</td>
-                <td>{client.distributor}</td>
-                <td>{client.email}</td>
-                <td>
-                  <button className="edit-button" onClick={() => handleEditClientClick(client)}>
-                    Edit
-                  </button>
-                  <button className="delete-button" onClick={() => handleDeleteClientClick(client)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <ClientsTable clients={clients} />
       </div>
       {actionState.isEditing && <ClientEdit client={actionState?.client} />}
       {actionState.isDeleting && <ClientDelete client={actionState?.client} />}

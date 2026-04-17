@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./index.css";
-import { ClientProps } from "../../../utils/interfaces/Client.interface";
+import { ClientProps } from "../../../shared/interfaces/Client.interface";
 
 export const ClientDelete = ({ client }: ClientProps) => {
     const [isCancel, setIsCancel] = useState(false);
